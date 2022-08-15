@@ -14,10 +14,12 @@
     </div>
 
     <div class="nav_profile">
-      <Cart />
-      <figure>
-        <img src="@/assets/images/image-avatar.png" alt="user image" />
-      </figure>
+      <div>
+        <Cart />
+        <figure>
+          <img src="@/assets/images/image-avatar.png" alt="user image" />
+        </figure>
+      </div>
     </div>
   </nav>
   <!-- <hr /> -->
