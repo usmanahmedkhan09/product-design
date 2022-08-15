@@ -96,6 +96,7 @@ html{
     max-width: 60%;
     margin: auto;
     margin-top: 8rem;
+    gap: 5rem;
 
     .product_images{
         img {
@@ -105,8 +106,8 @@ html{
             object-fit: cover;
         }
         .main_image{
-            // height: 30rem;
-            // max-height: 500px;
+            min-height: 400px;
+            min-width: 400px;
         }
         .sub_images{
             display: flex;
