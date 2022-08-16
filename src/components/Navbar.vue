@@ -1,10 +1,9 @@
 <template>
   <nav class="navbar">
     <div class="nav_links">
-      <figure class="nav_logo">
-        <Logo />
-      </figure>
+      <!-- <figure class="nav_logo"></figure> -->
       <ul>
+        <li><Logo /></li>
         <li><a href="#">Collections</a></li>
         <li><a href="#">Men</a></li>
         <li><a href="#">Women</a></li>
@@ -14,12 +13,16 @@
     </div>
 
     <div class="nav_profile">
-      <div>
-        <Cart />
-        <figure>
-          <img src="@/assets/images/image-avatar.png" alt="user image" />
-        </figure>
-      </div>
+      <ul>
+        <li>
+          <Cart />
+        </li>
+        <li>
+          <figure>
+            <img src="@/assets/images/image-avatar.png" alt="user image" />
+          </figure>
+        </li>
+      </ul>
     </div>
   </nav>
   <!-- <hr /> -->

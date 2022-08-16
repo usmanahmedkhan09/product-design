@@ -27,13 +27,26 @@
         companines.Featuring a durable rubber outer sole, they'll with stand
         everything the weather can offer.
       </p>
+      <p class="product_price">$125.00 <span>50%</span></p>
+      <p class="product_discount">$250.00</p>
+      <div class="buttons">
+        <div class="cart_counter">
+          <MinusIcon />
+          <p>0</p>
+          <PlusIcon />
+        </div>
+        <button class="btn cart_btn"><CartIcon /> Add to cart</button>
+      </div>
     </div>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-
+import PlusIcon from "@/components/icons/IconPlus.vue";
+import MinusIcon from "@/components/icons/IconMinus.vue";
+import CartIcon from "@/components/icons/IconCart.vue";
 export default defineComponent({
+  components: { PlusIcon, MinusIcon, CartIcon },
   setup() {
     return {};
   },

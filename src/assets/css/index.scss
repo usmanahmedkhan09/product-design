@@ -8,13 +8,12 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
-//   position: relative;
   font-weight: normal;
 }
 
 html{
-    // width: 100vw;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     font-size: 62.5%
 }
  body{
@@ -35,53 +34,60 @@ html{
         width: 100%;
         height: 100%;
     }
-}
 
-.navbar{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1rem;
-
-    .nav_links{
-        display: flex;
-        flex: 0 1 62%;
-        justify-content: center;
-    }
     ul {
         display: flex;
         list-style: none;
         font-size: 1.6rem;
+        padding: unset;
+    }
+}
 
-        li {
-            padding: 0px 16px;
-        }
-        li a {
-            text-decoration: none;
-            color: black;
+.navbar{
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0px;
+    margin: auto;
 
-            &:hover{
-                border-bottom: 4px solid $primary-color;
+    .nav_links{
+        display: flex;
+        ul {
+            display: flex;
+            list-style: none;
+            font-size: 1.6rem;
+            padding: unset;
+    
+            li {
+                padding: 0px 16px;
+                
+            }
+            li a {
+                text-decoration: none;
+                color: black;
+    
+                &:hover{
+                    border-bottom: 4px solid $primary-color;
+                }
             }
         }
     }
+  
 
     .nav_profile {
 
-        display: flex;
-        flex: 0 2 38%;
-        justify-content: center;
-
-        div {
-            min-width: 150px;
+        ul {
             display: flex;
-            justify-content: space-between;
+            li:not(:last-child) {
+                align-self: center;
+                padding: 0px 7rem;
+            }
         }
 
         figure{
-            max-width: 50px;
-            max-height: 50px;
+            height: 50px;
+            width: 50px;
         }
 
         svg{
@@ -95,8 +101,9 @@ html{
     display: flex;
     max-width: 60%;
     margin: auto;
+    // justify-content: center;
     margin-top: 8rem;
-    gap: 5rem;
+    // gap: 5rem;
 
     .product_images{
         img {
@@ -113,6 +120,7 @@ html{
             display: flex;
             justify-content: space-between;
             margin-top: 1rem;
+            gap: 1rem;
 
             div{
                 max-height: 100px;
@@ -123,6 +131,7 @@ html{
 
     .product_info{
         align-self: center;
+        margin-left: 32px;
         .title {
             font-weight: 700;
             color: $primary-color;
@@ -136,16 +145,96 @@ html{
 
         .product_description{
             font-size: 1.6rem;
+            color : $dark-grey-blue;
+            margin: 3rem 0px;
         }
+
+        .product_price{
+            font-size: 3rem;
+            font-weight: bolder;
+            display: flex;
+            align-items: center;
+
+            span{
+                display: inline-block;
+                background-color: $paleOrange;
+                color: $primary-color;
+                font-size: 1.4rem;
+                font-weight: bold;
+                padding: 2px 10px;
+                border-radius: 5px;   
+                margin-left: 1.6rem;       
+              }
+        }
+        .product_discount{
+            font-size: 1.6rem;
+            text-decoration: line-through;
+            color: $dark-grayish-blue;
+            font-weight: bold;
+            margin-bottom: 3rem;
+        }
+
+        .buttons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            .cart_counter{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 1.6rem;
+                width: 200px;
+                border-radius: 5px;
+                padding: 1rem;
+                height: 50px;
+                background-color: $light-grayish-blue;
+                
+    
+                p{
+                    font-weight: bold;
+                }
+            }
+
+            button {
+                flex-grow: 1;
+                background-color: $primary-color;
+                color : $White;
+                border: none;
+                border-radius: 5px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 1.6rem;
+
+                svg{
+                    margin-right: 3rem;
+                    align-self: center;
+                    path{
+                        fill: $White !important;
+                    }
+                }
+                
+                // svg path{
+                    
+                // }
+            }
+        }
+
+        
     }
 
 }
 
 
-// @media (max-width : 750px) {
-    
-//    html{
-//     font-size: 50%;
-//    }
+// @media (max-width : 1024px) {
+//     .navbar{
+//         justify-content: center;
+//         padding: 1rem;
+//     }
+  
 // }
 
