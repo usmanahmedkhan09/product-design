@@ -1,41 +1,44 @@
 <template>
-  <nav class="navbar">
-    <div class="nav_links">
-      <!-- <figure class="nav_logo"></figure> -->
-      <ul>
-        <li><Logo /></li>
+  <header>
+    <nav class="nav">
+      <div class="nav_logos">
+        <MenuIcon class="menu_icon" @click="showSidebar = !showSidebar" />
+        <Logo />
+      </div>
+
+      <ul class="nav_links">
         <li><a href="#">Collections</a></li>
         <li><a href="#">Men</a></li>
         <li><a href="#">Women</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
-    </div>
-
+    </nav>
     <div class="nav_profile">
-      <ul>
-        <li>
-          <Cart />
-        </li>
-        <li>
-          <figure>
-            <img src="@/assets/images/image-avatar.png" alt="user image" />
-          </figure>
-        </li>
-      </ul>
+      <Cart @click="showCart = !showCart" />
+      <figure>
+        <img src="@/assets/images/image-avatar.png" alt="user image" />
+      </figure>
     </div>
-  </nav>
-  <!-- <hr /> -->
+    <Sidebar :open="showSidebar" @close="showSidebar = !showSidebar" />
+    <!-- <UserCart v-if="showCart" /> -->
+  </header>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import Logo from "@/components/icons/IconLogo.vue";
 import Cart from "@/components/icons/IconCart.vue";
+import UserCart from "@/components/Cart.vue";
+import MenuIcon from "./icons/IconMenu.vue";
+import Sidebar from "@/components/sidebar.vue";
 
 export default defineComponent({
-  components: { Logo, Cart },
+  components: { Logo, Cart, UserCart, MenuIcon, Sidebar },
   setup() {
-    return {};
+    const showCart = ref(false);
+
+    const showSidebar = ref(false);
+    return { showCart, showSidebar };
   },
 });
 </script>

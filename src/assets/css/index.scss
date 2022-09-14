@@ -2,6 +2,9 @@
 // @import url("https://fonts.google.com/specimen/Kumbh+Sans");
 
 @import './variables.scss';
+@import './_helpers.scss';
+@import './_navbar.scss';
+@import './_sidebar.scss';
 
 *,
 *::before,
@@ -41,70 +44,87 @@ html{
         font-size: 1.6rem;
         padding: unset;
     }
-}
 
-.navbar{
-    display: flex;
-    width: 80%;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 0px;
-    margin: auto;
-
-    .nav_links{
-        display: flex;
-        ul {
-            display: flex;
-            list-style: none;
-            font-size: 1.6rem;
-            padding: unset;
-    
-            li {
-                padding: 0px 16px;
-                
-            }
-            li a {
-                text-decoration: none;
-                color: black;
-    
-                &:hover{
-                    border-bottom: 4px solid $primary-color;
-                }
-            }
-        }
-    }
-  
-
-    .nav_profile {
-
-        ul {
-            display: flex;
-            li:not(:last-child) {
-                align-self: center;
-                padding: 0px 7rem;
-            }
-        }
-
-        figure{
-            height: 50px;
-            width: 50px;
-        }
-
-        svg{
-            align-self: center;
-        }
+    ::-webkit-scrollbar{
+        width: 0;
     }
 }
+
+
 
 
 .product{
     display: flex;
     max-width: 60%;
     margin: auto;
-    // justify-content: center;
     margin-top: 8rem;
-    // gap: 5rem;
 
+    &.detail{
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        position: relative;
+
+        .main_image {
+            position: relative
+        }
+        .sub_images{
+            width: 80%;
+            flex: calc(100% / 4);
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+
+        }
+
+        .header_icon{
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            top: -40px;
+            right: -14px;
+        }
+
+        .icon_container{
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: white;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-50%);
+            
+            &.nextIcon{
+                top: 50%;
+                bottom: 50%;
+                right: -50px;
+            }
+
+            &.previousIcon{
+                top: 50%;
+                bottom: 50%;
+                left: 0px;
+            }
+
+            #element:hover{
+                stroke: $primary-color;
+                fill: none;
+            }
+ 
+        }
+
+        svg {
+            fill: white;
+            
+            :hover{
+                fill: $primary-color;
+            }
+        }
+    }
     .product_images{
         img {
             height: 100%;
@@ -126,6 +146,20 @@ html{
                 max-height: 100px;
                 max-width: 100px;
             }
+
+            .active{
+                border : 2px solid $primary-color;
+                border-radius: 12px;
+                background: white;
+                opacity: .8;
+
+                img {
+                    opacity : .5;
+                    box-sizing: border-box;
+                }
+           
+            }
+            
         }   
     }
 
@@ -169,7 +203,7 @@ html{
         .product_discount{
             font-size: 1.6rem;
             text-decoration: line-through;
-            color: $dark-grayish-blue;
+            color: $dark-grey-blue;
             font-weight: bold;
             margin-bottom: 3rem;
         }
@@ -189,7 +223,7 @@ html{
                 border-radius: 5px;
                 padding: 1rem;
                 height: 50px;
-                background-color: $light-grayish-blue;
+                background-color: $light-grey ;
                 
     
                 p{
@@ -197,31 +231,7 @@ html{
                 }
             }
 
-            button {
-                flex-grow: 1;
-                background-color: $primary-color;
-                color : $White;
-                border: none;
-                border-radius: 5px;
-                height: 50px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-weight: 700;
-                font-size: 1.6rem;
-
-                svg{
-                    margin-right: 3rem;
-                    align-self: center;
-                    path{
-                        fill: $White !important;
-                    }
-                }
-                
-                // svg path{
-                    
-                // }
-            }
+          
         }
 
         
@@ -230,11 +240,82 @@ html{
 }
 
 
-// @media (max-width : 1024px) {
-//     .navbar{
-//         justify-content: center;
-//         padding: 1rem;
-//     }
+.cart_container {
+    height: 250px;
+    width: 350px;
+    position: absolute;
+    background-color: white;
+    top: 70px;
+    left: -110px;
+    border-radius: 10px;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+      0 100px 80px rgba(0, 0, 0, 0.12);
   
-// }
+    .cart_header {
+      padding: 16px;
+      border-bottom: 1px solid $blue-grey;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .cart_content{
+        height: calc(100% - 58px);
+        display: grid;
+        place-items: center;
+        padding: 16px;
+
+        .product_detail{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            figure{
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+                 img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 5px;
+                 }
+            }
+            p {
+                font-size: 1.6rem;
+                color: $dark-grey-blue;
+                span {
+                    display: block;
+                    strong {
+                        color: $Black;
+                        font-weight: 700;
+                    }
+                }
+            }
+            svg {
+                margin-left: 12px;
+                align-self: center;
+            }
+        }
+       
+    }
+  }
+
+
+  .images_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.7); 
+  }
+
+
 

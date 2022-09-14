@@ -1,0 +1,26 @@
+.btn--primary {
+    flex-grow: 1;
+    background-color: $primary-color;
+    color : $White;
+    border: none;
+    border-radius: 5px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.6rem;
+
+    &.full-width{
+        width : 100%
+    }
+
+    svg{
+        margin-right: 3rem;
+        align-self: center;
+        path{
+            fill: $White !important;
+        }
+    }
+    
+}

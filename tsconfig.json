@@ -2,15 +2,36 @@
   "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
   "compilerOptions": {
+    // "target": "esnext",
+    // "module": "esnext",
+    // "strict": true,
+    // "resolveJsonModule": true,
+    // "jsx": "preserve",
+    // "importHelpers": true,
+    "moduleResolution": "node",
+    // "skipLibCheck": true,
+    // "esModuleInterop": true,
+    // "allowSyntheticDefaultImports": true,
+    // "sourceMap": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": [
+      "node",
+      "webpack-env"
+    ],
+  
   },
-
+ 
   "references": [
     {
       "path": "./tsconfig.config.json"
     }
+  ],
+
+  "typeRoots": [
+    "../node_modules/@types",
+    "./src/helpers/alltypes.s.ts"
   ]
 }

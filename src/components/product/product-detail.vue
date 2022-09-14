@@ -2,20 +2,23 @@
   <div class="product">
     <div class="product_images">
       <div class="main_image">
-        <img src="@/assets/images/p-1.jpg" alt="product-1" />
+        <img
+          :src="getImage(`p-${selectedPic}.jpg`)"
+          alt="product-1"
+          @click="showImages = true"
+        />
       </div>
       <div class="sub_images">
-        <div>
-          <img src="@/assets/images/p-1.jpg" alt="product-1" />
-        </div>
-        <div>
-          <img src="@/assets/images/p-2.jpg" alt="product-2" />
-        </div>
-        <div>
-          <img src="@/assets/images/p-3.jpg" alt="product-3" />
-        </div>
-        <div>
-          <img src="@/assets/images/p-4.jpg" alt="product-4" />
+        <div
+          v-for="(item, index) in [1, 2, 3, 4]"
+          :key="index"
+          :class="selectedPic == item ? 'active' : ''"
+        >
+          <img
+            :src="getImage(`p-${item}.jpg`)"
+            alt="product-1"
+            @click="selectedPic = item"
+          />
         </div>
       </div>
     </div>
@@ -35,20 +38,32 @@
           <p>0</p>
           <PlusIcon />
         </div>
-        <button class="btn cart_btn"><CartIcon /> Add to cart</button>
+        <button class="btn--primary"><CartIcon /> Add to cart</button>
       </div>
     </div>
   </div>
+  <ProductImages v-if="showImages" @close="showImages = false" />
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import PlusIcon from "@/components/icons/IconPlus.vue";
 import MinusIcon from "@/components/icons/IconMinus.vue";
 import CartIcon from "@/components/icons/IconCart.vue";
+import ProductImages from "@/components/product/productImages.vue";
+
 export default defineComponent({
-  components: { PlusIcon, MinusIcon, CartIcon },
+  components: { PlusIcon, MinusIcon, CartIcon, ProductImages },
   setup() {
-    return {};
+    const selectedPic = ref(1);
+    const showImages = ref(false);
+    const getImage = (url: any) => {
+      return new URL(`../assets/images/${url}`, import.meta.url).href;
+    };
+    return {
+      getImage,
+      selectedPic,
+      showImages,
+    };
   },
 });
 </script>
