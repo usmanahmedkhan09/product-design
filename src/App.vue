@@ -1,8 +1,8 @@
 <template>
   <Navbar />
-  <!-- <div class="content-container">
+  <div class="content-container">
     <router-view></router-view>
-  </div> -->
+  </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";

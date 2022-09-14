@@ -57,7 +57,7 @@ export default defineComponent({
     const selectedPic = ref(1);
     const showImages = ref(false);
     const getImage = (url: any) => {
-      return new URL(`../assets/images/${url}`, import.meta.url).href;
+      return new URL(`../../assets/images/${url}`, import.meta.url).href;
     };
     return {
       getImage,

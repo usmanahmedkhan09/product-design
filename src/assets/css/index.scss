@@ -76,6 +76,7 @@ html{
             justify-content: center;
             align-items: center;
             margin: auto;
+            
 
         }
 
@@ -126,6 +127,10 @@ html{
         }
     }
     .product_images{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
         img {
             height: 100%;
             width: 100%;
@@ -133,8 +138,7 @@ html{
             object-fit: cover;
         }
         .main_image{
-            min-height: 400px;
-            min-width: 400px;
+            height: -webkit-fill-available;
         }
         .sub_images{
             display: flex;
@@ -319,3 +323,17 @@ html{
 
 
 
+@media screen and (max-width: 1024px) {
+    .product{
+        max-width: 90%;
+        flex-direction: column;
+
+        .product_info{
+            margin: 16px 0px;
+
+            .buttons{
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
