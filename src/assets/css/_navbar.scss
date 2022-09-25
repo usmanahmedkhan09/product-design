@@ -76,3 +76,27 @@ header{
             }
         }
 }
+
+@media screen and (max-width : 375px) {
+    header{
+        padding: 1rem 1rem;
+        justify-content: space-between;
+
+        .nav{
+            width: unset;
+
+            .nav_logos{
+                margin: unset;
+            }
+        }
+
+    .nav_profile{
+        min-width: unset;
+        flex-wrap: nowrap;
+
+        svg{
+            margin-right: 10px;
+        }
+    }
+    }
+}

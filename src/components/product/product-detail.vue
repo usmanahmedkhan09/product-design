@@ -5,8 +5,14 @@
         <img
           :src="getImage(`p-${selectedPic}.jpg`)"
           alt="product-1"
-          @click="showImages = true"
+          @click="handleShowImages()"
         />
+        <div class="icon_container rightArrow">
+          <NextIcon class="icon" @click="nextImage()" />
+        </div>
+        <div class="icon_container leftArrow">
+          <PreviousIcon class="icon" @click="previousImage()" />
+        </div>
       </div>
       <div class="sub_images">
         <div
@@ -17,7 +23,7 @@
           <img
             :src="getImage(`p-${item}.jpg`)"
             alt="product-1"
-            @click="selectedPic = item"
+            @click="handleSelectedImage(item)"
           />
         </div>
       </div>
@@ -34,9 +40,9 @@
       <p class="product_discount">$250.00</p>
       <div class="buttons">
         <div class="cart_counter">
-          <MinusIcon />
-          <p>0</p>
-          <PlusIcon />
+          <MinusIcon @click="decrmentQuantity()" />
+          <p>{{ quantity }}</p>
+          <PlusIcon @click="incrmentQuantity()" />
         </div>
         <button class="btn--primary"><CartIcon /> Add to cart</button>
       </div>
@@ -45,24 +51,85 @@
   <ProductImages v-if="showImages" @close="showImages = false" />
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, watch } from "vue";
 import PlusIcon from "@/components/icons/IconPlus.vue";
 import MinusIcon from "@/components/icons/IconMinus.vue";
 import CartIcon from "@/components/icons/IconCart.vue";
 import ProductImages from "@/components/product/productImages.vue";
+import NextIcon from "../icons/IconNext.vue";
+import PreviousIcon from "../icons/IconPrevious.vue";
 
 export default defineComponent({
-  components: { PlusIcon, MinusIcon, CartIcon, ProductImages },
+  components: {
+    PlusIcon,
+    MinusIcon,
+    CartIcon,
+    ProductImages,
+    NextIcon,
+    PreviousIcon,
+  },
   setup() {
     const selectedPic = ref(1);
+
     const showImages = ref(false);
+
+    let innerWidth = ref(window.innerWidth);
+
+    let quantity = ref(0);
+
+    const handleSelectedImage = (image: any) => {
+      selectedPic.value = image;
+    };
+
+    const handleShowImages = () => {
+      if (window.innerWidth > 375) {
+        showImages.value = true;
+      }
+    };
+
+    watch([innerWidth], (innerWidth: any) => {
+      if (innerWidth <= 375) {
+        console.log("hererererrer");
+        showImages.value = false;
+      }
+    });
+
     const getImage = (url: any) => {
       return new URL(`../../assets/images/${url}`, import.meta.url).href;
     };
+
+    const nextImage = () => {
+      if (selectedPic.value > 0 && selectedPic.value < 4) {
+        selectedPic.value++;
+      }
+    };
+
+    const previousImage = () => {
+      if (selectedPic.value > 1 && selectedPic.value <= 4) {
+        selectedPic.value--;
+      }
+    };
+
+    const decrmentQuantity = () => {
+      if (quantity.value > 0) quantity.value--;
+    };
+
+    const incrmentQuantity = () => {
+      quantity.value++;
+    };
+
     return {
+      innerWidth,
       getImage,
       selectedPic,
       showImages,
+      handleSelectedImage,
+      handleShowImages,
+      previousImage,
+      nextImage,
+      decrmentQuantity,
+      incrmentQuantity,
+      quantity,
     };
   },
 });

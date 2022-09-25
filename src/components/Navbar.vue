@@ -15,13 +15,13 @@
       </ul>
     </nav>
     <div class="nav_profile">
-      <Cart @click="showCart = !showCart" />
+      <Cart @click="handleCartToggle()" />
       <figure>
         <img src="@/assets/images/image-avatar.png" alt="user image" />
       </figure>
     </div>
     <Sidebar :open="showSidebar" @close="showSidebar = !showSidebar" />
-    <!-- <UserCart v-if="showCart" /> -->
+    <UserCart v-if="showCart" />
   </header>
 </template>
 <script lang="ts">
@@ -38,7 +38,11 @@ export default defineComponent({
     const showCart = ref(false);
 
     const showSidebar = ref(false);
-    return { showCart, showSidebar };
+
+    const handleCartToggle = () => {
+      showCart.value = !showCart.value;
+    };
+    return { showCart, showSidebar, handleCartToggle };
   },
 });
 </script>

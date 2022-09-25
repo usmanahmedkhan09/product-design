@@ -88,36 +88,7 @@ html{
             right: -14px;
         }
 
-        .icon_container{
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            background-color: white;
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transform: translateX(-50%);
-            
-            &.nextIcon{
-                top: 50%;
-                bottom: 50%;
-                right: -50px;
-            }
-
-            &.previousIcon{
-                top: 50%;
-                bottom: 50%;
-                left: 0px;
-            }
-
-            #element:hover{
-                stroke: $primary-color;
-                fill: none;
-            }
- 
-        }
-
+       
         svg {
             fill: white;
             
@@ -139,6 +110,8 @@ html{
         }
         .main_image{
             height: -webkit-fill-available;
+            // min-height: 400px;
+            min-width: 250px;
         }
         .sub_images{
             display: flex;
@@ -243,14 +216,47 @@ html{
 
 }
 
+.icon_container{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+    
+    &.nextIcon{
+        top: 50%;
+        bottom: 50%;
+        // transform: translateX(-50%);
+        right: -50px;
+    }
+
+    &.previousIcon{
+        top: 50%;
+        bottom: 50%;
+        left: 0px;
+        // transform: translateX(-50%);
+    }
+
+    #element:hover{
+        stroke: $primary-color;
+        fill: none;
+    }
+
+}
+
+
 
 .cart_container {
     height: 250px;
     width: 350px;
     position: absolute;
     background-color: white;
-    top: 70px;
-    left: -110px;
+    top: 90px;
+    right: 30px;
     border-radius: 10px;
     box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
       0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
@@ -327,6 +333,7 @@ html{
     .product{
         max-width: 90%;
         flex-direction: column;
+        margin-top: 0px;
 
         .product_info{
             margin: 16px 0px;
@@ -335,5 +342,83 @@ html{
                 flex-wrap: wrap;
             }
         }
+
+        .product_images{
+            .main_image{
+                min-height: unset;
+            }   
+        }
     }
+
+    .cart_container{
+        top: 100px;
+    }
+    
+}
+
+@media screen and (max-width: 375px) {
+    .cart_container{
+        right: 0;
+        top: 78px;
+        left: 0;
+        width: 95%;
+        margin: auto;
+    }
+    .product{
+        width: 100%;
+        max-width: unset;
+        .product_images{
+            .main_image{
+                position: relative;
+                img{
+                    border-radius: unset;
+                }
+            }
+            .sub_images{
+                display: none;
+            }
+    
+        }
+        .product_info{
+            margin: 16px;
+        }
+    }
+
+    .images_container{
+        display: none;
+    }
+
+    .icon_container {
+        &.leftArrow{
+            left: 36px;
+            top: 50%;
+            bottom: 50%;
+        }
+        
+        &.rightArrow{
+            right: -12px;
+            top: 50%;
+            bottom: 50%;
+        }
+    }
+     
+}
+
+@media screen and (min-width : 376px){
+    .product{
+        .product_images{
+            .main_image{
+                .icon_container {
+                    &.leftArrow{
+                        display: none;
+                    }
+
+                    &.rightArrow{
+                        display: none;
+                    }
+                 }
+            }
+        }
+    }
+   
 }
