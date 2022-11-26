@@ -4,7 +4,7 @@
     <div class="cart_content">
       <div class="product_detail">
         <figure>
-          <img src="@/assets/images/p-1.jpg" alt="" srcset="" />
+          <img src="@/assets/images/p-1.jpg" alt="" />
         </figure>
         <p>
           Fall Limited Edition Sneakers
